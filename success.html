@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You | HopeBridge Donations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="success-wrapper">
+      <div class="success-card">
+        <span class="eyebrow">Thank you</span>
+        <h1>Your generosity is making a difference.</h1>
+        <p>We have received your donation and appreciate your support for this cause.</p>
+
+        <div class="success-summary" id="donationSummary"></div>
+
+        <a href="index.html" class="back-btn">Back to donation page</a>
+      </div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name') || 'Donor';
+      const email = params.get('email') || 'N/A';
+      const amount = params.get('amount') || '0';
+      const type = params.get('type') || 'One-time';
+      const cause = params.get('cause') || 'General Support';
+      const message = params.get('message') || '';
+
+      const summaryEl = document.getElementById('donationSummary');
+      const summary = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Donation:</strong> ₹${amount}</p>
+        <p><strong>Type:</strong> ${type}</p>
+        <p><strong>Cause:</strong> ${cause}</p>
+        ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
+      `;
+
+      summaryEl.innerHTML = summary;
+    </script>
+  </body>
+</html>
