@@ -17,10 +17,8 @@ steps:
       }
     displayName: Validate static site files
 
-  - task: AzureStaticWebApp@0
-    inputs:
-      app_location: '/'
-      api_location: ''
-      output_location: ''
-      skip_app_build: true
-      azure_static_web_apps_api_token: $(deployment_token)
+  - powershell: |
+      npx.cmd --yes @azure/static-web-apps-cli@latest deploy . --env production
+    displayName: Deploy to Azure Static Web Apps
+    env:
+      SWA_CLI_DEPLOYMENT_TOKEN: $(deployment_token)
