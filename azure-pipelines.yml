@@ -8,11 +8,13 @@ variables:
   - group: swa-deployment
 
 steps:
-  - script: |
-      test -f index.html
-      test -f style.css
-      test -f script.js
-      test -f success.html
+  - powershell: |
+      $files = @('index.html', 'style.css', 'script.js', 'success.html')
+      foreach ($file in $files) {
+        if (-not (Test-Path $file)) {
+          throw "Required site file missing: $file"
+        }
+      }
     displayName: Validate static site files
 
   - task: AzureStaticWebApp@0
