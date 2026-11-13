@@ -9,6 +9,17 @@ variables:
 
 steps:
   - powershell: |
+      if ([string]::IsNullOrWhiteSpace($env:SWA_CLI_DEPLOYMENT_TOKEN) -or
+          $env:SWA_CLI_DEPLOYMENT_TOKEN -match '^\$\(.+\)$') {
+        Write-Error "Deployment token is missing or unresolved."
+        exit 1
+      }
+      Write-Host "Deployment token is present (value hidden)."
+    displayName: "Check SWA token is available"
+    env:
+      SWA_CLI_DEPLOYMENT_TOKEN: $(deployment_token)
+
+  - powershell: |
       $files = @('index.html', 'style.css', 'script.js', 'success.html')
       foreach ($file in $files) {
         if (-not (Test-Path $file)) {
