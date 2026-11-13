@@ -29,7 +29,30 @@ steps:
     displayName: Validate static site files
 
   - powershell: |
-      npx.cmd --yes @azure/static-web-apps-cli@latest deploy . --env production
-    displayName: Deploy to Azure Static Web Apps
+      $client = Get-ChildItem (Join-Path $env:USERPROFILE '.swa\deploy') `
+        -Filter 'StaticSitesClient.exe' -Recurse -ErrorAction SilentlyContinue |
+        Sort-Object LastWriteTime -Descending |
+        Select-Object -First 1 -ExpandProperty FullName
+
+      if (-not $client) {
+        throw "StaticSitesClient.exe was not found in the user's SWA cache."
+      }
+
+      $env:DEPLOYMENT_ACTION = 'upload'
+      $env:DEPLOYMENT_PROVIDER = 'SwaCli'
+      $env:REPOSITORY_BASE = $env:BUILD_SOURCESDIRECTORY
+      $env:APP_LOCATION = $env:BUILD_SOURCESDIRECTORY
+      $env:SKIP_APP_BUILD = 'true'
+      $env:SKIP_API_BUILD = 'true'
+      $env:DEPLOYMENT_TOKEN = $env:SWA_CLI_DEPLOYMENT_TOKEN
+      $env:VERBOSE = 'false'
+      $env:FUNCTION_LANGUAGE = 'node'
+      $env:FUNCTION_LANGUAGE_VERSION = '22'
+
+      & $client
+      if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+      }
+    displayName: Diagnose Static Web Apps deployment
     env:
       SWA_CLI_DEPLOYMENT_TOKEN: $(deployment_token)
