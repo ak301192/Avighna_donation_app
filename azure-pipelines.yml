@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool:
-  name: default
+  name: Default
 
 variables:
   - group: swa-deployment
@@ -17,7 +17,7 @@ steps:
       Write-Host "Deployment token is present (value hidden)."
     displayName: "Check SWA token is available"
     env:
-      SWA_CLI_DEPLOYMENT_TOKEN: $(deployment_token)
+      SWA_CLI_DEPLOYMENT_TOKEN: $(swa_api_token)
 
   - powershell: |
       $files = @('index.html', 'style.css', 'script.js', 'success.html')
@@ -55,4 +55,4 @@ steps:
       }
     displayName: Diagnose Static Web Apps deployment
     env:
-      SWA_CLI_DEPLOYMENT_TOKEN: $(deployment_token)
+      SWA_CLI_DEPLOYMENT_TOKEN: $(swa_api_token)
