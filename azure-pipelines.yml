@@ -41,7 +41,7 @@ steps:
       $env:DEPLOYMENT_ACTION = 'upload'
       $env:DEPLOYMENT_PROVIDER = 'SwaCli'
       $env:REPOSITORY_BASE = $env:BUILD_SOURCESDIRECTORY
-      $env:APP_LOCATION = $env:BUILD_SOURCESDIRECTORY
+      $env:APP_LOCATION = '.'
       $env:SKIP_APP_BUILD = 'true'
       $env:SKIP_API_BUILD = 'true'
       $env:DEPLOYMENT_TOKEN = $env:SWA_CLI_DEPLOYMENT_TOKEN.Trim()
