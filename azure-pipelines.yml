@@ -1,0 +1,24 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: swa-deployment
+
+steps:
+  - script: |
+      test -f index.html
+      test -f style.css
+      test -f script.js
+      test -f success.html
+    displayName: Validate static site files
+
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: '/'
+      api_location: ''
+      output_location: ''
+      skip_app_build: true
+      azure_static_web_apps_api_token: $(deployment_token)
