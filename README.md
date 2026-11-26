@@ -10,7 +10,7 @@ A modern static donation website for collecting support for community assistance
 - `README.md` — Project overview and instructions
 
 ## How it works
-1. A donor fills in their name, email, phone, donation amount, and cause.
+1. A donor fills in their name, email, phone, donation amount, donation type, and optional message.
 2. The form validates required fields.
 3. Donation details are stored in `localStorage`.
 4. The user is redirected to a success page with all submitted details.

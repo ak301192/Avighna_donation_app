@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const amount = document.getElementById('donationAmount').value.trim();
     const phone = document.getElementById('donorPhone').value.trim();
     const type = document.getElementById('donationType').value;
-    const cause = document.getElementById('cause').value;
     const message = document.getElementById('message').value.trim();
 
     if (!name || !email || !amount || !phone) {
@@ -47,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       phone,
       amount,
       type,
-      cause,
       message,
       timestamp: new Date().toISOString()
     };
@@ -59,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       email,
       amount,
       type,
-      cause,
       message
     });
 

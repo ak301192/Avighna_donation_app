@@ -11,7 +11,7 @@
       <div class="success-card">
         <span class="eyebrow">Thank you</span>
         <h1>Your generosity is making a difference.</h1>
-        <p>We have received your donation and appreciate your support for this cause.</p>
+        <p>We have received your donation and appreciate your support.</p>
 
         <div class="success-summary" id="donationSummary"></div>
 
@@ -25,7 +25,6 @@
       const email = params.get('email') || 'N/A';
       const amount = params.get('amount') || '0';
       const type = params.get('type') || 'One-time';
-      const cause = params.get('cause') || 'General Support';
       const message = params.get('message') || '';
 
       const summaryEl = document.getElementById('donationSummary');
@@ -34,7 +33,6 @@
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Donation:</strong> ₹${amount}</p>
         <p><strong>Type:</strong> ${type}</p>
-        <p><strong>Cause:</strong> ${cause}</p>
         ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
       `;
 
