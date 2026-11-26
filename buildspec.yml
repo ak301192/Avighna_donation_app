@@ -3,6 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
+      - node --check server.js
       - node --check script.js
 
 artifacts:
@@ -11,3 +12,5 @@ artifacts:
     - success.html
     - style.css
     - script.js
+    - server.js
+    - package.json

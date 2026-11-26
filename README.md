@@ -7,6 +7,8 @@ A modern static donation website for collecting support for community assistance
 - `success.html` — Thank-you page after the donation is submitted
 - `style.css` — Responsive donation app styling
 - `script.js` — Form validation and form submission handling
+- `server.js` — Node.js server used by Elastic Beanstalk to serve the static files
+- `package.json` — Defines the Node.js start command
 - `README.md` — Project overview and instructions
 
 ## How it works
@@ -16,14 +18,14 @@ A modern static donation website for collecting support for community assistance
 4. The user is redirected to a success page with all submitted details.
 
 ## Run locally
-Open `index.html` directly in a browser or serve the folder with a simple local web server:
+Run the Node.js server used by Elastic Beanstalk:
 
 ```bash
-cd E:\Ananth\projects
-python -m http.server 8000
+cd E:\Ananth\Projects
+npm start
 ```
 
-Then visit `http://localhost:8000`.
+Then visit `http://localhost:8080`.
 
 ## Customization ideas
 - Change brand name and colors in `style.css`
