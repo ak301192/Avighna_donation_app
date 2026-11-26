@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - node --check script.js
+
+artifacts:
+  files:
+    - index.html
+    - success.html
+    - style.css
+    - script.js
