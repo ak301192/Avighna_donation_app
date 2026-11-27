@@ -11,7 +11,7 @@
       <div class="success-card">
         <span class="eyebrow">Thank you</span>
         <h1>Your generosity is making a difference.</h1>
-        <p>We have received your donation and appreciate your support.</p>
+        <p>We received your form submission and appreciate your support. Online payments are not processed through this website.</p>
 
         <div class="success-summary" id="donationSummary"></div>
 
@@ -21,22 +21,23 @@
 
     <script>
       const params = new URLSearchParams(window.location.search);
-      const name = params.get('name') || 'Donor';
-      const email = params.get('email') || 'N/A';
-      const amount = params.get('amount') || '0';
-      const type = params.get('type') || 'One-time';
-      const message = params.get('message') || '';
-
       const summaryEl = document.getElementById('donationSummary');
-      const summary = `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Donation:</strong> ₹${amount}</p>
-        <p><strong>Type:</strong> ${type}</p>
-        ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
-      `;
+      const details = [
+        ['Name', params.get('name') || 'Donor'],
+        ['Email', params.get('email') || 'N/A'],
+        ['Donation', `₹${params.get('amount') || '0'}`],
+        ['Type', params.get('type') || 'One-time']
+      ];
+      const message = params.get('message');
+      if (message) details.push(['Message', message]);
 
-      summaryEl.innerHTML = summary;
+      details.forEach(([label, value]) => {
+        const row = document.createElement('p');
+        const heading = document.createElement('strong');
+        heading.textContent = `${label}:`;
+        row.append(heading, ` ${value}`);
+        summaryEl.append(row);
+      });
     </script>
   </body>
 </html>

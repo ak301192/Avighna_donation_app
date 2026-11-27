@@ -360,6 +360,12 @@ nav a {
   box-shadow: 0 14px 28px rgba(16, 79, 75, 0.24);
 }
 
+.donate-btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .donate-btn:focus-visible,
 .back-btn:focus-visible,
 .amount-chip:focus-visible {

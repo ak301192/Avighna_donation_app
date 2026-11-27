@@ -14,13 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const name = document.getElementById('donorName').value.trim();
     const email = document.getElementById('donorEmail').value.trim();
     const amount = document.getElementById('donationAmount').value.trim();
     const phone = document.getElementById('donorPhone').value.trim();
+    const address = document.getElementById('donorAddress').value.trim();
     const type = document.getElementById('donationType').value;
     const message = document.getElementById('message').value.trim();
 
@@ -44,22 +45,52 @@ document.addEventListener('DOMContentLoaded', () => {
       name,
       email,
       phone,
+      address,
       amount,
       type,
       message,
       timestamp: new Date().toISOString()
     };
 
-    localStorage.setItem('hopeBridgeDonation', JSON.stringify(donation));
+    const submitButton = form.querySelector('.donate-btn');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending confirmation...';
 
-    const params = new URLSearchParams({
-      name,
-      email,
-      amount,
-      type,
-      message
-    });
+    try {
+      localStorage.setItem('hopeBridgeDonation', JSON.stringify(donation));
 
-    window.location.href = `success.html?${params.toString()}`;
+      const response = await fetch('/api/confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, amount, type })
+      });
+      const responseText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch {
+        throw new Error(`The server returned an unexpected response (${response.status}). Restart the local server and try again.`);
+      }
+
+      if (!response.ok) {
+        throw new Error(result.message || 'The confirmation email could not be sent.');
+      }
+
+      const params = new URLSearchParams({
+        name,
+        email,
+        amount,
+        type,
+        message
+      });
+
+      window.location.href = `success.html?${params.toString()}`;
+    } catch (error) {
+      console.error('Confirmation email request failed:', error);
+      alert(error.message || 'The confirmation email could not be sent. Please try again.');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Donate now';
+    }
   });
 });
