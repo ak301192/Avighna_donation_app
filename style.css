@@ -278,19 +278,31 @@ nav a {
   width: 100%;
   padding: 13px 15px;
   border-radius: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.62);
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--dark);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  caret-color: var(--white);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.76);
+  opacity: 1;
+}
+
+.form-group select option {
+  color: var(--dark);
+  background: var(--white);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: rgba(23, 107, 101, 0.7);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 0 0 4px rgba(23, 107, 101, 0.1);
+  border-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 4px rgba(215, 166, 75, 0.4);
 }
 
 .form-row {
