@@ -181,10 +181,11 @@ nav a {
   max-width: 790px;
   margin: 36px auto 0;
   padding: clamp(24px, 4vw, 38px);
-  border: 1px solid rgba(24, 59, 55, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 26px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 24px 70px rgba(24, 59, 55, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
   text-align: left;
 }
 
@@ -196,12 +197,15 @@ nav a {
   font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: -0.03em;
+  color: var(--white);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 .form-heading p {
   margin: 6px 0 0;
   font-size: 0.95rem;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 .hero-stats {
@@ -264,7 +268,8 @@ nav a {
   margin-bottom: 7px;
   font-size: 0.91rem;
   font-weight: 650;
-  color: var(--dark);
+  color: var(--white);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
 .form-group input,
@@ -273,8 +278,8 @@ nav a {
   width: 100%;
   padding: 13px 15px;
   border-radius: 13px;
-  border: 1px solid var(--line);
-  background: #fbfcfa;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.82);
   color: var(--dark);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
@@ -284,7 +289,7 @@ nav a {
 .form-group textarea:focus {
   outline: none;
   border-color: rgba(23, 107, 101, 0.7);
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 0 0 4px rgba(23, 107, 101, 0.1);
 }
 
@@ -301,9 +306,9 @@ nav a {
 }
 
 .amount-chip {
-  background: #f5f8f5;
-  border: 1px solid rgba(23, 107, 101, 0.16);
-  color: var(--primary-dark);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  color: var(--white);
   border-radius: 12px;
   padding: 12px 14px;
   cursor: pointer;
