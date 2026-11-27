@@ -8,6 +8,7 @@ A modern static donation website for collecting support for community assistance
 - `style.css` — Responsive donation app styling
 - `script.js` — Form validation and form submission handling
 - `server.js` — Node.js server used by Elastic Beanstalk to serve the static files
+- `ganesh-chaturthi-background.jpeg` — Background image supplied for the celebration page
 - `package.json` — Defines the Node.js start command
 - `README.md` — Project overview and instructions
 

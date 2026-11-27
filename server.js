@@ -7,14 +7,16 @@ const routes = new Map([
   ['/index.html', 'index.html'],
   ['/success.html', 'success.html'],
   ['/style.css', 'style.css'],
-  ['/script.js', 'script.js']
+  ['/script.js', 'script.js'],
+  ['/ganesh-chaturthi-background.jpeg', 'ganesh-chaturthi-background.jpeg']
 ]);
 
 const contentTypes = {
   'index.html': 'text/html; charset=utf-8',
   'success.html': 'text/html; charset=utf-8',
   'style.css': 'text/css; charset=utf-8',
-  'script.js': 'text/javascript; charset=utf-8'
+  'script.js': 'text/javascript; charset=utf-8',
+  'ganesh-chaturthi-background.jpeg': 'image/jpeg'
 };
 
 const server = http.createServer((request, response) => {
