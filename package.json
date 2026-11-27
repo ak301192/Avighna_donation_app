@@ -2,7 +2,13 @@
   "name": "avighna-donation-app",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node server.js"
+  },
+  "dependencies": {
+    "nodemailer": "^10.6.1"
   }
 }

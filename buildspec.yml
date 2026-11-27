@@ -1,6 +1,11 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm ci
   build:
     commands:
       - node --check server.js
@@ -14,4 +19,5 @@ artifacts:
     - script.js
     - server.js
     - package.json
+    - package-lock.json
     - ganesh-chaturthi-background.jpeg
